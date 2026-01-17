@@ -1,0 +1,336 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Stock Pitches | Soham A. Bhatia</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        html, body {
+            height: 100%;
+        }
+
+        body {
+            font-family: 'JetBrains Mono', monospace;
+            background-color: #0a0a0a;
+            color: #e5e5e5;
+            display: flex;
+            flex-direction: column;
+            min-height: 100vh;
+        }
+
+        /* Main content */
+        main {
+            flex: 1;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            padding: 80px 24px;
+        }
+
+        .content {
+            width: 100%;
+            max-width: 700px;
+        }
+
+        h1 {
+            font-size: clamp(1.75rem, 4vw, 2.25rem);
+            font-weight: 500;
+            letter-spacing: -0.02em;
+            margin-bottom: 12px;
+            color: #ffffff;
+        }
+
+        .email {
+            margin-bottom: 48px;
+            display: flex;
+            flex-direction: column;
+            gap: 4px;
+        }
+
+        .email a {
+            font-size: 0.9rem;
+            color: #ef4444;
+            text-decoration: none;
+            transition: color 0.2s ease;
+        }
+
+        .email a:hover {
+            color: #f87171;
+        }
+
+        /* Section title */
+        .section-title {
+            font-size: 1rem;
+            font-weight: 500;
+            margin-bottom: 24px;
+            color: #ffffff;
+        }
+
+        /* Pitches list */
+        .pitches-list {
+            list-style: none;
+        }
+
+        .pitches-list li {
+            margin-bottom: 8px;
+        }
+
+        .pitch-item {
+            border: 1px solid #1f1f1f;
+            border-radius: 4px;
+            overflow: hidden;
+            transition: border-color 0.2s ease;
+        }
+
+        .pitch-item:hover {
+            border-color: #333;
+        }
+
+        .pitch-header {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            padding: 14px 16px;
+            cursor: pointer;
+            transition: background-color 0.2s ease;
+        }
+
+        .pitch-header:hover {
+            background-color: #111;
+        }
+
+        .pitch-header-left {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .diamond {
+            color: #ef4444;
+            font-size: 0.7rem;
+        }
+
+        .ticker {
+            color: #e5e5e5;
+            font-size: 0.9rem;
+        }
+
+        .expand-icon {
+            color: #737373;
+            font-size: 0.75rem;
+            transition: transform 0.2s ease;
+        }
+
+        .pitch-item.open .expand-icon {
+            transform: rotate(180deg);
+        }
+
+        /* PDF Preview */
+        .pitch-preview {
+            display: none;
+            background-color: #111;
+            border-top: 1px solid #1f1f1f;
+        }
+
+        .pitch-item.open .pitch-preview {
+            display: block;
+        }
+
+        .pdf-container {
+            width: 100%;
+            height: 500px;
+            background: #0a0a0a;
+        }
+
+        .pdf-container iframe {
+            width: 100%;
+            height: 100%;
+            border: none;
+        }
+
+        .preview-actions {
+            display: flex;
+            justify-content: flex-end;
+            padding: 12px 16px;
+            gap: 16px;
+            border-top: 1px solid #1f1f1f;
+        }
+
+        .preview-actions a {
+            color: #737373;
+            text-decoration: none;
+            font-size: 0.8rem;
+            transition: color 0.2s ease;
+        }
+
+        .preview-actions a:hover {
+            color: #ffffff;
+        }
+
+        /* Bottom navigation */
+        nav {
+            border-top: 1px solid #1f1f1f;
+            padding: 20px 0;
+        }
+
+        nav ul {
+            list-style: none;
+            display: flex;
+            justify-content: space-around;
+            align-items: center;
+            max-width: 900px;
+            margin: 0 auto;
+            padding: 0 24px;
+        }
+
+        nav a {
+            font-size: 0.85rem;
+            color: #737373;
+            text-decoration: none;
+            transition: color 0.2s ease;
+        }
+
+        nav a:hover {
+            color: #ffffff;
+        }
+
+        nav a.active {
+            color: #e5e5e5;
+        }
+
+        /* Responsive */
+        @media (max-width: 600px) {
+            nav ul {
+                flex-wrap: wrap;
+                gap: 16px 32px;
+                justify-content: center;
+            }
+
+            main {
+                padding-top: 60px;
+            }
+
+            .pdf-container {
+                height: 400px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <main>
+        <div class="content">
+            <h1>Soham A. Bhatia</h1>
+            <div class="email">
+                <a href="mailto:sobhatia@iu.edu">sobhatia@iu.edu</a>
+                <a href="mailto:bhatiasoham14@gmail.com">bhatiasoham14@gmail.com</a>
+            </div>
+
+            <h2 class="section-title">Stock Pitches:</h2>
+
+            <ul class="pitches-list">
+                <!--
+                    HOW TO ADD A PITCH:
+                    
+                    1. Upload your PDF to GitHub (e.g., github.com/YOU/pitches/raw/main/VZ-pitch.pdf)
+                    2. Copy a pitch-item block below and update:
+                       - The ticker name
+                       - data-pdf attribute with your PDF URL (use Google Docs Viewer format)
+                       - The download/open links
+                -->
+
+                <li>
+                    <div class="pitch-item" data-pdf="https://docs.google.com/viewer?url=https://github.com/YOUR_USERNAME/pitches/raw/main/VZ-pitch.pdf&embedded=true">
+                        <div class="pitch-header" onclick="togglePitch(this)">
+                            <div class="pitch-header-left">
+                                <span class="diamond">♦</span>
+                                <span class="ticker">VZ - Verizon Communications</span>
+                            </div>
+                            <span class="expand-icon">▼</span>
+                        </div>
+                        <div class="pitch-preview">
+                            <div class="pdf-container">
+                                <!-- PDF loads when expanded -->
+                            </div>
+                            <div class="preview-actions">
+                                <a href="https://github.com/YOUR_USERNAME/pitches/raw/main/VZ-pitch.pdf" target="_blank">download pdf</a>
+                                <a href="https://github.com/YOUR_USERNAME/pitches/raw/main/VZ-pitch.pdf" target="_blank">open in new tab</a>
+                            </div>
+                        </div>
+                    </div>
+                </li>
+
+                <li>
+                    <div class="pitch-item" data-pdf="https://docs.google.com/viewer?url=https://github.com/YOUR_USERNAME/pitches/raw/main/TICKER-pitch.pdf&embedded=true">
+                        <div class="pitch-header" onclick="togglePitch(this)">
+                            <div class="pitch-header-left">
+                                <span class="diamond">♦</span>
+                                <span class="ticker">TICKER - Company Name</span>
+                            </div>
+                            <span class="expand-icon">▼</span>
+                        </div>
+                        <div class="pitch-preview">
+                            <div class="pdf-container">
+                                <!-- PDF loads when expanded -->
+                            </div>
+                            <div class="preview-actions">
+                                <a href="https://github.com/YOUR_USERNAME/pitches/raw/main/TICKER-pitch.pdf" target="_blank">download pdf</a>
+                                <a href="https://github.com/YOUR_USERNAME/pitches/raw/main/TICKER-pitch.pdf" target="_blank">open in new tab</a>
+                            </div>
+                        </div>
+                    </div>
+                </li>
+
+                <!-- Add more pitches by copying the <li> block above -->
+
+            </ul>
+        </div>
+    </main>
+
+    <nav>
+        <ul>
+            <li><a href="index.html">Home</a></li>
+            <li><a href="models.html">Models</a></li>
+            <li><a href="pitches.html" class="active">Stock Pitches</a></li>
+            <li><a href="https://linkedin.com/in/YOUR_LINKEDIN" target="_blank">LinkedIn</a></li>
+            <li><a href="https://github.com/YOUR_USERNAME" target="_blank">Github</a></li>
+            <li><a href="https://twitter.com/YOUR_HANDLE" target="_blank">Twitter</a></li>
+        </ul>
+    </nav>
+
+    <script>
+        function togglePitch(header) {
+            const pitchItem = header.closest('.pitch-item');
+            const isOpen = pitchItem.classList.contains('open');
+            
+            // Close all other pitches
+            document.querySelectorAll('.pitch-item.open').forEach(item => {
+                if (item !== pitchItem) {
+                    item.classList.remove('open');
+                    item.querySelector('.pdf-container').innerHTML = '';
+                }
+            });
+            
+            if (isOpen) {
+                // Close this pitch
+                pitchItem.classList.remove('open');
+                pitchItem.querySelector('.pdf-container').innerHTML = '';
+            } else {
+                // Open this pitch and load PDF
+                pitchItem.classList.add('open');
+                const pdfUrl = pitchItem.getAttribute('data-pdf');
+                const container = pitchItem.querySelector('.pdf-container');
+                container.innerHTML = `<iframe src="${pdfUrl}" allowfullscreen></iframe>`;
+            }
+        }
+    </script>
+</body>
+</html>

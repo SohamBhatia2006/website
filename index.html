@@ -1,0 +1,128 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Soham A. Bhatia</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        html, body {
+            height: 100%;
+        }
+
+        body {
+            font-family: 'JetBrains Mono', monospace;
+            background-color: #0a0a0a;
+            color: #e5e5e5;
+            display: flex;
+            flex-direction: column;
+            min-height: 100vh;
+        }
+
+        /* Main content - centered */
+        main {
+            flex: 1;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            padding: 48px 24px;
+        }
+
+        h1 {
+            font-family: 'JetBrains Mono', monospace;
+            font-size: clamp(2rem, 5vw, 2.75rem);
+            font-weight: 500;
+            letter-spacing: -0.02em;
+            margin-bottom: 16px;
+            color: #ffffff;
+        }
+
+        .email {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 6px;
+        }
+
+        .email a {
+            font-size: 0.9rem;
+            color: #ef4444;
+            text-decoration: none;
+            transition: color 0.2s ease;
+        }
+
+        .email a:hover {
+            color: #f87171;
+        }
+
+        /* Bottom navigation */
+        nav {
+            border-top: 1px solid #1f1f1f;
+            padding: 20px 0;
+        }
+
+        nav ul {
+            list-style: none;
+            display: flex;
+            justify-content: space-around;
+            align-items: center;
+            max-width: 900px;
+            margin: 0 auto;
+            padding: 0 24px;
+        }
+
+        nav a {
+            font-size: 0.85rem;
+            color: #737373;
+            text-decoration: none;
+            transition: color 0.2s ease;
+        }
+
+        nav a:hover {
+            color: #ffffff;
+        }
+
+        nav a.active {
+            color: #e5e5e5;
+        }
+
+        /* Responsive */
+        @media (max-width: 600px) {
+            nav ul {
+                flex-wrap: wrap;
+                gap: 16px 32px;
+                justify-content: center;
+            }
+        }
+    </style>
+</head>
+<body>
+    <main>
+        <h1>Soham A. Bhatia</h1>
+        <div class="email">
+            <a href="mailto:sobhatia@iu.edu">sobhatia@iu.edu</a>
+            <a href="mailto:bhatiasoham14@gmail.com">bhatiasoham14@gmail.com</a>
+        </div>
+    </main>
+
+    <nav>
+        <ul>
+            <li><a href="index.html" class="active">Home</a></li>
+            <li><a href="models.html">Models</a></li>
+            <li><a href="pitches.html">Stock Pitches</a></li>
+            <li><a href="https://linkedin.com/in/YOUR_LINKEDIN" target="_blank">LinkedIn</a></li>
+            <li><a href="https://github.com/YOUR_USERNAME" target="_blank">Github</a></li>
+            <li><a href="https://twitter.com/YOUR_HANDLE" target="_blank">Twitter</a></li>
+        </ul>
+    </nav>
+</body>
+</html>
