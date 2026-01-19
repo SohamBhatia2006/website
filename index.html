@@ -1,4 +1,4 @@
-<!doctype html>
+<!DOCTYPE html>
 <html lang="en">
 <head>
   <meta charset="UTF-8" />
@@ -7,18 +7,16 @@
 
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-  <link
-    href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;700&display=swap"
-    rel="stylesheet"
-  />
+  <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500;700&display=swap" rel="stylesheet" />
 
   <style>
+    /* MASTER THEME (Identical across all pages) */
     :root {
-      --bg: #000;
-      --text: #fff;
-      --muted: #cfcfcf;
-      --accent: #ff4d4d;
-      --nav-font: 1.1rem;
+      --bg: #000000;
+      --text: #e5e5e5;       /* Softer white to match Pitches */
+      --muted: #888888;      /* Darker grey to match Pitches */
+      --accent: #ef4444;     /* Red Accent */
+      --border: #333333;     /* The specific border color you liked */
     }
 
     * { box-sizing: border-box; }
@@ -29,80 +27,62 @@
       font-family: "JetBrains Mono", monospace;
       margin: 0;
       padding: 0;
+      line-height: 1.6;
     }
 
-    /* Top navigation */
+    /* NAVIGATION (Standardized) */
     nav {
-      padding: 1rem 1.5rem;
-      font-size: var(--nav-font);
+      padding: 1.5rem 2rem;
       display: flex;
-      align-items: center;
       justify-content: space-between;
-      gap: 1rem;
-      flex-wrap: wrap;
+      align-items: center;
+      border-bottom: 1px solid var(--border); /* The key symmetry line */
     }
 
-    .nav-left,
-    .nav-right {
-      display: flex;
-      align-items: center;
-      gap: 1rem;
-      flex-wrap: wrap;
-    }
+    .nav-links { display: flex; gap: 2rem; }
 
     nav a {
-      color: var(--text);
-      text-decoration: none;
-    }
-
-    nav a:hover {
-      text-decoration: underline;
-    }
-
-    /* Social links on the right */
-    .nav-right a {
       color: var(--muted);
+      text-decoration: none;
+      font-size: 0.95rem;
+      transition: color 0.2s;
     }
 
-    .nav-right a:hover {
-      color: var(--text);
-    }
+    nav a:hover { color: var(--text); }
+    nav a.active { color: var(--text); text-decoration: underline; text-decoration-color: var(--accent); }
 
-    /* Main body: left aligned like your screenshot */
+    /* CONTENT LAYOUT */
     main {
-      padding: 2.5rem 1.5rem;
       max-width: 900px;
-      margin: 0;
+      margin: 4rem auto;
+      padding: 0 1.5rem;
     }
 
+    /* Index Specifics */
     h1 {
-      font-size: 2.1rem;
+      font-size: 2rem;
       font-weight: 700;
       margin: 0 0 1.5rem 0;
+      color: var(--text);
     }
 
     .contact-lines {
-      margin: 0 0 2rem 0;
-      line-height: 2;
+      margin-bottom: 2.5rem;
+      display: flex;
+      flex-direction: column;
+      gap: 0.5rem;
     }
 
     .contact-lines a {
       color: var(--accent);
       text-decoration: none;
     }
-
-    .contact-lines a:hover {
-      text-decoration: underline;
-    }
+    .contact-lines a:hover { text-decoration: underline; }
 
     p {
       color: var(--muted);
       font-size: 1rem;
-      line-height: 1.6;
       max-width: 680px;
-      margin: 0;
-
-      /* NEW: justified text */
       text-align: justify;
       text-justify: inter-word;
       hyphens: auto;
@@ -112,16 +92,16 @@
 
 <body>
   <nav>
-    <div class="nav-left">
-      <a href="index.html">home</a>
+    <div class="nav-links">
+      <a href="index.html" class="active">home</a>
       <a href="models.html">models</a>
       <a href="pitches.html">pitches</a>
     </div>
 
-    <div class="nav-right">
-      <a href="https://www.linkedin.com/in/sohambhatia06" target="_blank" rel="noopener noreferrer">linkedin</a>
-      <a href="https://github.com/SohamBhatia2006" target="_blank" rel="noopener noreferrer">github</a>
-      <a href="https://x.com/SohamBhatia2" target="_blank" rel="noopener noreferrer">twitter</a>
+    <div class="nav-links">
+      <a href="https://www.linkedin.com/in/sohambhatia06" target="_blank">linkedin</a>
+      <a href="https://github.com/SohamBhatia2006" target="_blank">github</a>
+      <a href="https://x.com/SohamBhatia2" target="_blank">twitter</a>
     </div>
   </nav>
 
@@ -135,7 +115,3 @@
 
     <p>
       Hi, I'm a student at the Kelley School of Business @ IUB. Studying finance and statistics, I enjoy everything about public equities and the investment management space. I have my models and investment pitches here, I'd love any feedback or resources to make me better at investment analysis and refine my process. I'm currently looking for a ER/HF seat to gain further experience.
-    </p>
-  </main>
-</body>
-</html>
